@@ -1,0 +1,65 @@
+---
+title: "flex_dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+# Start
+
+## Column {data-width="500"}
+
+### Chart A
+
+```{r}
+
+
+```
+
+## Column {data-width="250"}
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
+## Column {data-width="250"}
+
+### Chart D
+
+```{r}
+
+
+```
+
+
+# Export
+
+## Column {data-width="500"}
+
+### Data 1 
+```{r}
+
+```
+
+
+
+## Column {data-width="500"}
+
+### data 2 
+```{r}
+
+```
+
