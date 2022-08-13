@@ -8,6 +8,9 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(tidyverse)
+library(highcharter)
+library(gt)
 ```
 
 # Start
@@ -45,7 +48,7 @@ library(flexdashboard)
 ```
 
 
-# Export
+# Export 
 
 ## Column {data-width="500"}
 
