@@ -44,12 +44,12 @@ custome_color <- viridis::mako(n = 3)
 DS %>% group_by(village) %>% 
   summarise(no_membrs = sum(no_membrs)) %>% 
   arrange(desc(no_membrs)) %>%
-  head(15) %>% 
+  head() %>% 
   hchart('column', hcaes(x=village ,y=no_membrs , color = custome_color)) %>% 
   hc_add_theme(hc_theme_google()) %>% 
   hc_tooltip(pointFormat = '<b> Number of of mumbrs: </b> {point.y} <br>') %>% 
   
-  hc_subtitle(text = "by number of members",
+  hc_subtitle(text = " Number of members for each village",
               style= list(fontsize="25px")) %>% 
   hc_credits(enable = TRUE, text= "Omar bin Saad")
   
@@ -66,12 +66,12 @@ custome_color <- viridis::cividis(n = 3)
 DS %>% group_by(village) %>% 
   summarise(years_liv = mean(round(years_liv))) %>% 
   arrange(desc(years_liv)) %>%
-  head(15) %>% 
+  head() %>% 
   hchart('column', hcaes(x=village ,y=years_liv , color = custome_color)) %>% 
   hc_add_theme(hc_theme_google()) %>% 
   hc_tooltip(pointFormat = '<b> Number of of years liv: </b> {point.y} <br>') %>% 
   
-  hc_subtitle(text = "by number of years live",
+  hc_subtitle(text = "Avrage number of years live",
               style= list(fontsize="25px")) %>% 
   hc_credits(enable = TRUE, text= "Omar bin Saad")
   
@@ -86,12 +86,12 @@ custome_color <- viridis::inferno(n = 3)
 DS %>% group_by(village) %>% 
   summarise(rooms = sum(rooms)) %>% 
   arrange(desc(rooms)) %>%
-  head(15) %>% 
+  head() %>% 
   hchart('column', hcaes(x=village ,y=rooms , color = custome_color)) %>% 
   hc_add_theme(hc_theme_google()) %>% 
   hc_tooltip(pointFormat = '<b> Number of of rooms: </b> {point.y} <br>') %>% 
   
-  hc_subtitle(text = "by number of rooms",
+  hc_subtitle(text = "The Total rooms in each village",
               style= list(fontsize="25px")) %>% 
   hc_credits(enable = TRUE, text= "Omar bin Saad")
   
@@ -108,14 +108,14 @@ DS %>% group_by(village) %>%
 custome_color <- viridis::plasma(n = 3)
 
 DS %>% group_by(village) %>% 
-  summarise(liv_count = sum(liv_count)) %>% 
+  summarise(liv_count = mean(liv_count)) %>% 
   arrange(desc(liv_count)) %>%
   head(15) %>% 
   hchart('column', hcaes(x=village ,y=liv_count , color = custome_color)) %>% 
   hc_add_theme(hc_theme_google()) %>% 
   hc_tooltip(pointFormat = '<b> Number of of liv_count: </b> {point.y} <br>') %>% 
   
-  hc_subtitle(text = "by number of liv_count",
+  hc_subtitle(text = "Avrage number of pepole for each house",
               style= list(fontsize="25px")) %>% 
   hc_credits(enable = TRUE, text= "Omar bin Saad")       
 
