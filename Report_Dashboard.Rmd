@@ -64,7 +64,7 @@ DS %>% group_by(village) %>%
 custome_color <- viridis::cividis(n = 3)
 
 DS %>% group_by(village) %>% 
-  summarise(years_liv = sum(years_liv)) %>% 
+  summarise(years_liv = mean(round(years_liv))) %>% 
   arrange(desc(years_liv)) %>%
   head(15) %>% 
   hchart('column', hcaes(x=village ,y=years_liv , color = custome_color)) %>% 
@@ -103,6 +103,8 @@ DS %>% group_by(village) %>%
 
 ```{r}
 
+
+
 custome_color <- viridis::plasma(n = 3)
 
 DS %>% group_by(village) %>% 
@@ -115,7 +117,9 @@ DS %>% group_by(village) %>%
   
   hc_subtitle(text = "by number of liv_count",
               style= list(fontsize="25px")) %>% 
-  hc_credits(enable = TRUE, text= "Omar bin Saad")
+  hc_credits(enable = TRUE, text= "Omar bin Saad")       
+
+
+
   
 ```
-
