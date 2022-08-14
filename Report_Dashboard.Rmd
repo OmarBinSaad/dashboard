@@ -7,13 +7,31 @@ output:
 ---
 
 ```{r setup, include=FALSE}
+
 library(flexdashboard)
 library(tidyverse)
 library(highcharter)
 library(gt)
+library(htmltools)
+library(viridis)
+library(dplyr)
+library(here)
 ```
 
-# Start
+```{r}
+DS <- read_csv(here("Data","SAFI_clean.csv"),na = "NULL")
+
+DS <- DS %>% filter(!is.na(memb_assoc))
+DS <- DS %>% filter(!is.na(affect_conflicts))
+DS <- DS %>% filter(!is.na(items_owned))
+
+```
+
+
+
+
+
+# Page 1
 
 ## Column {data-width="500"}
 
@@ -21,7 +39,21 @@ library(gt)
 
 ```{r}
 
+custome_color <- viridis::mako(n = 3)
 
+DS %>% group_by(village) %>% 
+  summarise(no_membrs = sum(no_membrs)) %>% 
+  arrange(desc(no_membrs)) %>%
+  head(15) %>% 
+  hchart('column', hcaes(x=village ,y=no_membrs , color = custome_color)) %>% 
+  hc_add_theme(hc_theme_google()) %>% 
+  hc_tooltip(pointFormat = '<b> Number of of mumbrs: </b> {point.y} <br>') %>% 
+  
+  hc_subtitle(text = "by number of members",
+              style= list(fontsize="25px")) %>% 
+  hc_credits(enable = TRUE, text= "Omar bin Saad")
+  
+  
 ```
 
 ## Column {data-width="250"}
@@ -29,13 +61,40 @@ library(gt)
 ### Chart B
 
 ```{r}
+custome_color <- viridis::cividis(n = 3)
+
+DS %>% group_by(village) %>% 
+  summarise(years_liv = sum(years_liv)) %>% 
+  arrange(desc(years_liv)) %>%
+  head(15) %>% 
+  hchart('column', hcaes(x=village ,y=years_liv , color = custome_color)) %>% 
+  hc_add_theme(hc_theme_google()) %>% 
+  hc_tooltip(pointFormat = '<b> Number of of years liv: </b> {point.y} <br>') %>% 
+  
+  hc_subtitle(text = "by number of years live",
+              style= list(fontsize="25px")) %>% 
+  hc_credits(enable = TRUE, text= "Omar bin Saad")
+  
 
 ```
 
 ### Chart C
 
 ```{r}
+custome_color <- viridis::inferno(n = 3)
 
+DS %>% group_by(village) %>% 
+  summarise(rooms = sum(rooms)) %>% 
+  arrange(desc(rooms)) %>%
+  head(15) %>% 
+  hchart('column', hcaes(x=village ,y=rooms , color = custome_color)) %>% 
+  hc_add_theme(hc_theme_google()) %>% 
+  hc_tooltip(pointFormat = '<b> Number of of rooms: </b> {point.y} <br>') %>% 
+  
+  hc_subtitle(text = "by number of rooms",
+              style= list(fontsize="25px")) %>% 
+  hc_credits(enable = TRUE, text= "Omar bin Saad")
+  
 ```
 
 ## Column {data-width="250"}
@@ -44,25 +103,19 @@ library(gt)
 
 ```{r}
 
+custome_color <- viridis::plasma(n = 3)
 
-```
-
-
-# Export 
-
-## Column {data-width="500"}
-
-### Data 1 
-```{r}
-
-```
-
-
-
-## Column {data-width="500"}
-
-### data 2 
-```{r}
-
+DS %>% group_by(village) %>% 
+  summarise(liv_count = sum(liv_count)) %>% 
+  arrange(desc(liv_count)) %>%
+  head(15) %>% 
+  hchart('column', hcaes(x=village ,y=liv_count , color = custome_color)) %>% 
+  hc_add_theme(hc_theme_google()) %>% 
+  hc_tooltip(pointFormat = '<b> Number of of liv_count: </b> {point.y} <br>') %>% 
+  
+  hc_subtitle(text = "by number of liv_count",
+              style= list(fontsize="25px")) %>% 
+  hc_credits(enable = TRUE, text= "Omar bin Saad")
+  
 ```
 
